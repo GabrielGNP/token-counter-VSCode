@@ -1,0 +1,95 @@
+{
+  "name": "token-counter",
+  "displayName": "Token Counter",
+  "description": "Shows token count badge for each file in the Explorer",
+  "version": "0.8.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "tokenCounterExplorer",
+          "name": "Files (Token Count)",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Token Counter",
+      "properties": {
+        "tokenCounter.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable token count badges in the Explorer"
+        },
+        "tokenCounter.includeExtensions": {
+          "type": "array",
+          "default": [
+            ".md",
+            ".txt",
+            ".js",
+            ".ts",
+            ".py",
+            ".json",
+            ".yaml",
+            ".yml",
+            ".html",
+            ".css",
+            ".tsx",
+            ".jsx",
+            ".go",
+            ".rs",
+            ".java",
+            ".cpp",
+            ".c",
+            ".h"
+          ],
+          "description": "File extensions to count tokens for"
+        },
+        "tokenCounter.warningThreshold": {
+          "type": "number",
+          "default": 2000,
+          "description": "Tokens threshold for warning color"
+        },
+        "tokenCounter.dangerThreshold": {
+          "type": "number",
+          "default": 8000,
+          "description": "Tokens threshold for danger color"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "tokenCounter.refresh",
+        "title": "Token Counter: Refresh Counts"
+      },
+      {
+        "command": "tokenCounter.toggle",
+        "title": "Token Counter: Toggle On/Off"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/tokenizer": "^0.0.4",
+    "@dqbd/tiktoken": "^1.0.22"
+  }
+}
