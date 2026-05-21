@@ -1,6 +1,6 @@
 # token-counter-VSCode
 
-margen de error +/- 10% de tokens
+margen de error +/- 5-10% de tokens
 
 ## Instalar
 1. decargar el archivo vsix
